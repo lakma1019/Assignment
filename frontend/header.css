@@ -1,0 +1,38 @@
+.main-header {
+    width: 100%;
+    background: linear-gradient(to right, #43cea2, #185a9d);
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.navbar .nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.navbar .nav-links li a:hover,
+.navbar .nav-links li a.active {
+    text-decoration: underline;
+}
