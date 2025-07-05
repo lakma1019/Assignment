@@ -3,6 +3,8 @@ include 'db_connect.php';
 include 'header.php';
 
 $results = [];
+$from_date = '';
+$to_date = '';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $from_date = $_POST['from_date'];
@@ -51,17 +53,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <form method="POST" class="filter-form">
             <label for="from_date">From:</label>
-            <input type="date" name="from_date" id="from_date" required>
+            <input type="date" name="from_date" id="from_date" required value="<?= htmlspecialchars($from_date) ?>">
 
             <label for="to_date">To:</label>
-            <input type="date" name="to_date" id="to_date" required>
+            <input type="date" name="to_date" id="to_date" required value="<?= htmlspecialchars($to_date) ?>">
 
             <button type="submit" class="btn-search">Search</button>
         </form>
 
         <?php if (!empty($results) && $results->num_rows > 0): ?>
-            <div class="table-section">
-                <h3>Invoice Item Details</h3>
+            <div class="table-section" id="reportContent">
+                <h3>Invoice Item Details From <?= htmlspecialchars($from_date) ?> to <?= htmlspecialchars($to_date) ?></h3>
                 <table>
                     <thead>
                         <tr>
@@ -86,10 +88,36 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <?php endwhile; ?>
                     </tbody>
                 </table>
+                <button id="downloadBtn" class="btn-download no-print">Download PDF</button>
             </div>
         <?php elseif ($_SERVER["REQUEST_METHOD"] === "POST"): ?>
             <p class="no-results">No item data found in this date range.</p>
         <?php endif; ?>
     </div>
+
+    <!-- PDF Export Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        document.getElementById("downloadBtn")?.addEventListener("click", function () {
+            const button = document.getElementById("downloadBtn");
+            const element = document.getElementById("reportContent");
+
+            // Hide the button before generating PDF
+            button.style.display = "none";
+
+            const opt = {
+                margin: [0.5, 0.5, 0.5, 0.5],
+                filename: 'item_report.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, scrollY: 0 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restore the button after PDF is saved
+                button.style.display = "inline-block";
+            });
+        });
+    </script>
 </body>
 </html>

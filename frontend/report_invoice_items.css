@@ -82,6 +82,39 @@ h1 {
     box-shadow: 0 12px 24px rgba(91, 134, 229, 0.3);
 }
 
+.btn-download {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-download:hover {
+    background: linear-gradient(135deg, #5563c1 0%, #6d41a1 100%);
+    transform: scale(1.05);
+}
+
+.no-print {
+    display: inline-block;
+}
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
 .table-section {
     margin-top: 30px;
     overflow-x: auto;

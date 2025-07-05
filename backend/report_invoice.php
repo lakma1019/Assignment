@@ -3,6 +3,8 @@ include 'db_connect.php';
 include 'header.php';
 
 $results = [];
+$from_date = '';
+$to_date = '';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $from_date = $_POST['from_date'];
@@ -41,17 +43,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <form method="POST" class="filter-form">
             <label for="from_date">From Date:</label>
-            <input type="date" name="from_date" id="from_date" required>
+            <input type="date" name="from_date" id="from_date" required value="<?= htmlspecialchars($from_date) ?>">
 
             <label for="to_date">To Date:</label>
-            <input type="date" name="to_date" id="to_date" required>
+            <input type="date" name="to_date" id="to_date" required value="<?= htmlspecialchars($to_date) ?>">
 
             <button type="submit" class="btn-search">Search</button>
         </form>
 
         <?php if (!empty($results) && $results->num_rows > 0): ?>
             <div class="table-section" id="reportContent">
-                <h3>Results</h3>
+                <h3>Invoice Results Since <?= htmlspecialchars($from_date) ?> to <?= htmlspecialchars($to_date) ?></h3>
                 <table>
                     <thead>
                         <tr>
