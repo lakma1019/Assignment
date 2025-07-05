@@ -129,6 +129,24 @@ tr:hover {
     font-size: 1.1em;
 }
 
+.btn-download {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-download:hover {
+    background: linear-gradient(135deg, #e43e62 0%, #e94027 100%);
+    transform: scale(1.05);
+}
+
 @media (max-width: 768px) {
     .filter-form {
         flex-direction: column;

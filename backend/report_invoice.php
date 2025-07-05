@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </form>
 
         <?php if (!empty($results) && $results->num_rows > 0): ?>
-            <div class="table-section">
+            <div class="table-section" id="reportContent">
                 <h3>Results</h3>
                 <table>
                     <thead>
@@ -76,10 +76,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <?php endwhile; ?>
                     </tbody>
                 </table>
+                <button id="downloadBtn" class="btn-download">Download PDF</button>
             </div>
         <?php elseif ($_SERVER["REQUEST_METHOD"] === "POST"): ?>
             <p class="no-results">No invoices found in this date range.</p>
         <?php endif; ?>
     </div>
+
+    <!-- JS for PDF download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        document.getElementById("downloadBtn")?.addEventListener("click", function () {
+            const element = document.getElementById("reportContent");
+
+            const opt = {
+                margin:       0.5,
+                filename:     'invoice_report.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            html2pdf().from(element).set(opt).save();
+        });
+    </script>
 </body>
 </html>
