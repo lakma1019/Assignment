@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('./images/bg_invoice.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    background-color: rgba(180, 211, 248, 0.9);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 500px;
+}
+
+h1 {
+    text-align: center;
+    color: darkgreen;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: darkgreen;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: green;
+}
+
+.show-btn {
+    background-color: #007BFF;
+    margin-top: 15px;
+}
+
+.success {
+    color: green;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}

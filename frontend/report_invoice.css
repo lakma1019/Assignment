@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('../images/bg_invoice.jpeg');
+    background-image: url('./images/bg_invoice.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -19,7 +19,7 @@ body {
 }
 
 .report-container {
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(232, 175, 208, 0.96);
     backdrop-filter: blur(10px);
     padding: 40px;
     border-radius: 20px;
