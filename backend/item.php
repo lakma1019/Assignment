@@ -110,6 +110,7 @@ $items = $conn->query("SELECT i.*,
         </form>
 
         <button onclick="toggleItemTable()" class="btn-secondary">📊 Show Registered Items</button>
+        <a href="edit_item.php" class="btn-secondary">Edit Item</a>
 
         <div id="itemTable" style="display: none;">
             <h3>Registered Items</h3>

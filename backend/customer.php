@@ -1,7 +1,6 @@
 <?php
 include 'db_connect.php';
-include 'header.php'; 
-
+include 'header.php';
 
 $message = '';
 $messageType = '';
@@ -37,7 +36,6 @@ $customers = $conn->query("SELECT * FROM customer");
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Registration</title>
     <link rel="stylesheet" href="../frontend/customer.css">
     <link rel="stylesheet" href="../frontend/header.css">
@@ -103,7 +101,16 @@ $customers = $conn->query("SELECT * FROM customer");
             </div>
         </form>
 
-        <button onclick="toggleTable()" class="btn-secondary">📊 Show Registered Customers</button>
+        <div class="action-buttons">
+            <button onclick="toggleTable()" class="btn-secondary">
+                <span class="icon">📊</span>
+                <span class="text">Show Registered Customers</span>
+            </button>
+            <a href="edit_customer.php" class="btn-secondary
+                <span class="icon">✏️</span>
+                <span class="text">Edit Customers</span>
+            </a>
+        </div>
 
         <div id="customerTable" style="display: none;">
             <h3>Registered Customers</h3>
@@ -148,13 +155,13 @@ $customers = $conn->query("SELECT * FROM customer");
 
         function toggleTable() {
             const table = document.getElementById("customerTable");
-            const btn = document.querySelector(".btn-secondary");
+            const btn = document.querySelector(".btn-show-customers .text");
             if (table.style.display === "none" || table.style.display === "") {
                 table.style.display = "block";
-                btn.textContent = "📊 Hide Registered Customers";
+                btn.textContent = "Hide Registered Customers";
             } else {
                 table.style.display = "none";
-                btn.textContent = "📊 Show Registered Customers";
+                btn.textContent = "Show Registered Customers";
             }
         }
     </script>
